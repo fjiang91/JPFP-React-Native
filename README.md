@@ -1,1 +1,1 @@
-# JPFP-React-Native
+# Junior Phase Final Project-React-Native
