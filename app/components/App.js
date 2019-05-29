@@ -1,9 +1,6 @@
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -18,17 +15,21 @@ const styles = StyleSheet.create({
 });
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import {campusSeed, studentSeed} from '../../seed.js';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
+import { Provider } from 'react-redux';
+import store from '../store';
+import { CampusList } from './CampusList';
 
 export default class App extends Component {
-
   render() {
-    console.log(campusSeed, studentSeed);
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Junior Phase Final Project</Text>
-      </View>
+      <Provider store={store}>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <CampusList />
+          </ScrollView>
+        </SafeAreaView>
+      </Provider>
     );
   }
 }
