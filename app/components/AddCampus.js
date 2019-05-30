@@ -31,21 +31,9 @@ class AddCampus extends React.Component {
     }
   };
 
-  handleNameInput = name => {
-    this.setState({ name }, this.validateForm);
-  };
-
-  handleAddressInput = address => {
-    this.setState({ address }, this.validateForm);
-  };
-
-  handleDescriptionInput = description => {
-    this.setState({ description }, this.validateForm);
-  };
-
-  handleImageUrlInput = imageUrl => {
-    this.setState({ imageUrl }, this.validateForm);
-  };
+  handleInputChange = (val, key) => {
+    this.setState({[key]: val}, this.validateForm);
+  }
 
   handleSubmit = () => {
     this.props.addCampus(this.state);
@@ -64,25 +52,25 @@ class AddCampus extends React.Component {
         <TextInput
           placeholder="Campus Name"
           value={this.state.name}
-          onChangeText={this.handleNameInput}
+          onChangeText={ (val) => this.handleInputChange(val, 'name')}
           style={style.input}
         />
         <TextInput
           placeholder="Address"
           value={this.state.address}
-          onChangeText={this.handleAddressInput}
+          onChangeText={(val) => this.handleInputChange(val, 'address')}
           style={style.input}
         />
         <TextInput
           placeholder="Description"
           value={this.state.description}
-          onChangeText={this.handleDescriptionInput}
+          onChangeText={(val) => this.handleInputChange(val, 'description')}
           style={style.input}
         />
         <TextInput
           placeholder="Campus Image Url"
           value={this.state.imageUrl}
-          onChangeText={this.handleImageUrlInput}
+          onChangeText={(val) => this.handleInputChange(val, 'imageUrl')}
           style={style.input}
         />
         <Button title="Add Campus" style={style.input} onPress={this.handleSubmit}
