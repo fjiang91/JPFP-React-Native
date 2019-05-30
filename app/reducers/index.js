@@ -1,8 +1,8 @@
-import { combinedReducer } from 'redux';
-import CampusReducers from './CampusReducer';
+import { combineReducers } from 'redux';
+import CampusReducer  from './Campus';
 
-const rootReducers = combinedReducer({
-  campuses: CampusReducers
+const rootReducers = combineReducers({
+  campuses: CampusReducer
 });
 
 export default rootReducers;

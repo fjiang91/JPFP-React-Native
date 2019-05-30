@@ -2,24 +2,38 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import SingleCampus from './SingleCampus';
 import AddCampus from './AddCampus';
-import { campusSeed, studentSeed } from '../../seed.js';
+import { getAllCampuses } from '../reducers/Campus';
+import { connect } from 'react-redux';
 
-export class CampusList extends React.Component {
+class CampusList extends React.Component {
   componentDidMount = () => {
-    this.setState(campusSeed);
-  };
-  console.log(this.state;)
+    this.props.getCampuses();
+  }
 
   render() {
     return (
       <View>
         <AddCampus />
         <FlatList
-          data={this.state}
-          renderItem={obj => console.log(obj) }
+          data={this.props.campuses}
+          renderItem={obj => <SingleCampus {...obj.item} /> }
           keyExtractor={item => item.name}
         />
       </View>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    campuses: state.campuses.campuses
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCampuses: () => dispatch(getAllCampuses())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampusList);

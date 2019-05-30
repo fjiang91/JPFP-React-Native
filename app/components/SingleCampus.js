@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-const SingleCampus = (props) => {
-  console.log("TCL: SingleCampus -> props", props)
 
+const style = StyleSheet.create({
+  campusView: {
+    padding: 5,
+    borderColor: 'black',
+    borderWidth: 1,
+  },
+});
+
+const SingleCampus = (props) => {
   return (
-    <View>
+    <View style={style.campusView}>
       <Text>Campus Name: {props.name}</Text>
       <Text>Campus Address: {props.address}</Text>
       <Text>Campus Description: {props.description}</Text>

@@ -14,11 +14,11 @@ const styles = StyleSheet.create({
   },
 });
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
 import store from '../store';
-import { CampusList } from './CampusList';
+import CampusList from './CampusList';
 
 export default class App extends Component {
   render() {
@@ -33,4 +33,3 @@ export default class App extends Component {
     );
   }
 }
-

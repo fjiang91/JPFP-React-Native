@@ -1,8 +1,3 @@
-import axios from 'axios';
-
-const GET_ALL_CAMPUSES = 'GET_ALL_CAMPUSES';
-const ADD_CAMPUS = 'ADD_CAMPUS';
-
 const initialState = {
   campuses: [{
     name: 'One Piece Elementary School',
@@ -31,18 +26,33 @@ const initialState = {
   ]
 };
 
+const GET_ALL_CAMPUSES = 'GET_ALL_CAMPUSES';
+const ADD_CAMPUS = 'ADD_CAMPUS';
+
 export const getAllCampuses = () => {
   return {
     type: GET_ALL_CAMPUSES,
   }
 }
 
-export const campusReducer = (state = initialState, action) => {
+export const addCampus = (campus) => {
+  return {
+    type: ADD_CAMPUS,
+    campus
+  }
+}
+
+const Campus = (state = initialState, action) => {
   switch(action.type) {
     case GET_ALL_CAMPUSES: {
       return {...state};
+    }
+    case ADD_CAMPUS: {
+      return {...state, campuses: [...state.campuses, action.campus]};
     }
     default:
       return state;
   }
 };
+
+export default Campus;
