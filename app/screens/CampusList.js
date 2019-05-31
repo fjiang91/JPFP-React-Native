@@ -1,9 +1,19 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import SingleCampus from './SingleCampus';
 import AddCampus from './AddCampus';
 import { getAllCampuses } from '../reducers/Campus';
 import { connect } from 'react-redux';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  welcome: {
+    fontSize: 20,
+    margin: 10,
+  },
+});
 
 class CampusList extends React.Component {
   componentDidMount = () => {
@@ -12,7 +22,7 @@ class CampusList extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <AddCampus />
         <FlatList
           data={this.props.campuses}
