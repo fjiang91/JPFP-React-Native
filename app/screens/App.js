@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import store from '../store';
-import CampusList from './CampusList';
-import Students from './Students';
 import Home from './Home';
-// import Settings from './Settings'
-import { createAppContainer, createStackNavigator } from 'react-navigation';
+import Settings from './Settings';
+import CampusStack from './CampusStack';
+import StudentStack from './StudentStack';
+import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -16,25 +16,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const CampusStack = createStackNavigator(
-  {
-    CampusList: {
-      screen: CampusList,
-      navigationOptions: ({ navigation }) => ({
-        title: 'All Campus List'
-      }),
-    },
-  },
-  {
-    initialRouteName: 'CampusList',
-  }
-);
-
-const btmTabs = createMaterialBottomTabNavigator(
+const MainNavigation = createMaterialBottomTabNavigator(
   {
     Home: { screen: Home },
-    Students: { screen: Students },
-    CampusList: { screen: CampusStack },
+    Student: { screen: StudentStack },
+    Campus: { screen: CampusStack },
     // Settings: { screen: Settings }
   },
   {
@@ -45,14 +31,12 @@ const btmTabs = createMaterialBottomTabNavigator(
   }
 );
 
-const AppNavigator = createAppContainer(btmTabs);
+const AppNavigator = createAppContainer(MainNavigation);
 export default class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <SafeAreaView style={styles.container}>
-          <AppNavigator />
-        </SafeAreaView>
+      <Provider store={store} style={styles.container}>
+        <AppNavigator />
       </Provider>
     );
   }

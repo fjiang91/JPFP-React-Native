@@ -1,7 +1,11 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
-
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableHighlight,
+} from 'react-native';
 
 const style = StyleSheet.create({
   campusView: {
@@ -11,22 +15,21 @@ const style = StyleSheet.create({
   },
 });
 
-const SingleCampus = (props) => {
+const SingleCampus = props => {
   return (
-    <View style={style.campusView}>
-      <Text>Campus Name: {props.name}</Text>
-      <Text>Campus Address: {props.address}</Text>
-      <Text>Campus Description: {props.description}</Text>
-      <Image source={{uri: props.imageUrl}} style={{width: 200, height: 200}}/>
-    </View>
-  );
-};
+      <TouchableHighlight onPress={() => props.handleSelectContact(props)}>
+        <View style={style.campusView}>
+        <Text>Campus Name: {props.name}</Text>
+        <Text>Campus Address: {props.address}</Text>
+        <Text>Campus Description: {props.description}</Text>
+        <Image
+          source={{ uri: props.imageUrl }}
+          style={{ width: 200, height: 200 }}
+        />
+         </View>
+      </TouchableHighlight>
 
-SingleCampus.propTypes = {
-  name: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  );
 };
 
 export default SingleCampus;

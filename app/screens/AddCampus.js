@@ -23,6 +23,12 @@ class AddCampus extends React.Component {
     };
   }
 
+  static navigationOptions = ({navigate}) => {
+    return {
+      headerTitle: 'New Campus Info'
+    };
+  }
+
   validateForm = () => {
     if (this.state.name.length && this.state.imageUrl.length && this.state.address.length && this.state.description.length) {
       this.setState({validateNewCampus: false})
@@ -44,6 +50,7 @@ class AddCampus extends React.Component {
         description: '',
         validateNewCampus: true
     });
+    this.props.navigation.navigate('CampusList');
   };
 
   render() {
