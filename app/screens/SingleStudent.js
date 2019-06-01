@@ -24,8 +24,8 @@ const SingleStudent = props => {
         <Text>Student Email: {email}</Text>
         <Text>Student Address: {location.street}</Text>
         <Image
-          source={{ uri: picture.medium }}
-          style={{ width: 200, height: 200 }}
+          source={{ uri: picture.large }}
+          style={{ width: 350, height: 350 }}
         />
          </View>
       </TouchableHighlight>

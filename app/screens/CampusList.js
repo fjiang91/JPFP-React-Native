@@ -11,13 +11,6 @@ const styles = StyleSheet.create({
 });
 
 class CampusList extends React.Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerTitle: "Campus List",
-      headerRight:  <Button title="Add Campus" onPress={ () => navigation.navigate('AddCampus')} />
-    }
-  };
-
   componentDidMount = () => {
     this.props.getCampuses();
   }
